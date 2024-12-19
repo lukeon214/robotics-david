@@ -42,7 +42,7 @@ def listen3(key):
     if servo3.angle != 90:
         if key == "q":
             print("open")
-            servo3.angle += 10
+            servo3.angle += 45
             print(servo3.angle)
     else:
         pass
@@ -50,7 +50,7 @@ def listen3(key):
     if servo3.angle != -90:
         if key == "a":
             print("close")
-            servo3.angle -= 10
+            servo3.angle -= 45
             print(servo3.angle)
     
 listen_keyboard(listen1, listen2, listen3)
