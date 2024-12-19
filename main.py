@@ -23,7 +23,7 @@ def listen(key):
             servo1.angle -= 10
             print(servo1.angle)
 
-def listen(key):
+def listen2(key):
     if servo2.angle != 90:
         if key == "d":
             print("right")
@@ -39,4 +39,4 @@ def listen(key):
             print(servo2.angle)
 
     
-listen_keyboard(listen)
+listen_keyboard(listen, listen2)
