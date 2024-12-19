@@ -13,7 +13,7 @@ def listen(key):
             print("w")
             servo.angle += 5
     
-    if servo.angle <= -90:
+    elif servo.angle <= -90:
         if key=="s":
             print("s")
             servo.angle -= 5
