@@ -11,7 +11,7 @@ def listen(key):
     if servo1.angle != 90:
         if key == "w":
             print("up")
-            servo1.angle += 10
+            servo1.angle += 90
             print(servo1.angle)
     else:
         pass
@@ -19,7 +19,7 @@ def listen(key):
     if servo1.angle != -90:
         if key == "s":
             print("down")
-            servo1.angle -= 10
+            servo1.angle -= 90
             print(servo1.angle)
 
 def listen2(key):
