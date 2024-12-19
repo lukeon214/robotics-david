@@ -14,6 +14,6 @@ try:
             servo.angle += 1
         elif keyboard.is_pressed('s'):
             servo.angle -= 1
-
+        print(servo.angle)
 except KeyboardInterrupt:
     pass
