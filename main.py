@@ -1,5 +1,9 @@
 from gpiozero import AngularServo
+from gpiozero import LED
 from time import sleep
+
+led = LED(21)
+led.blink()
 
 servo = AngularServo(19, min_angle=-90, max_angle=180)
 
