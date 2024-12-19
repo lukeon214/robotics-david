@@ -11,8 +11,10 @@ servo = AngularServo(19, min_angle=-90, max_angle=90)
 try:
     while True:
         if keyboard.is_pressed('w'):
+            print("w")
             servo.angle += 1
         elif keyboard.is_pressed('s'):
+            print("s")
             servo.angle -= 1
         print(servo.angle)
 except KeyboardInterrupt:
