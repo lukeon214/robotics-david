@@ -10,8 +10,8 @@ while True:
         print("3. 0")
         print("4. 45")
         print("5. 90")
-        
-        input = int(input("Input: "))
+
+        input = input("Input: ")
 
         if input == 1:
             servo.angle = -90
