@@ -11,17 +11,17 @@ while True:
         print("4. 45")
         print("5. 90")
 
-        input = input("Input: ")
+        nigg = int(input("Input: "))
 
-        if input == 1:
+        if nigg == 1:
             servo.angle = -90
-        elif input == 2:
+        elif nigg == 2:
             servo.angle = -45
-        elif input == 3:
+        elif nigg == 3:
             servo.angle = 0
-        elif input == 4:
+        elif nigg == 4:
             servo.angle = 45
-        elif input == 5:
+        elif nigg == 5:
             servo.angle = 90
     except ValueError:
         print("nigga")
