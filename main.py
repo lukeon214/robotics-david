@@ -25,11 +25,11 @@ def listen(key):
 def listen2(key):
     if key == "d":
         print("right")
-        servo2.forward
+        servo2.forward()
 
     if key == "a":
         print("left")
-        servo2.backward
+        servo2.backward()
 
     
 listen_keyboard(listen, listen2)
