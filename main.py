@@ -15,13 +15,18 @@ while True:
 
         if nigg == 1:
             servo.angle = -90
+            sleep(2)
         elif nigg == 2:
             servo.angle = -45
+            sleep(2)
         elif nigg == 3:
             servo.angle = 0
+            sleep(2)
         elif nigg == 4:
             servo.angle = 45
+            sleep(2)
         elif nigg == 5:
             servo.angle = 90
+            sleep(2)
     except ValueError:
         print("nigga")
