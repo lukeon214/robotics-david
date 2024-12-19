@@ -16,13 +16,10 @@ def listen(key):
     else:
         pass
 
-    if servo.angle <= -90:
-        if key == "s":
-            print("S")
-            servo.angle -= 10
-            print(servo.angle)
-    else:
-        pass
+    if key == "s":
+        print("S")
+        servo.angle -= 10
+        print(servo.angle)
 
     
 listen_keyboard(listen)
