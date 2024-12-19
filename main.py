@@ -10,11 +10,11 @@ servo = AngularServo(19, min_angle=-90, max_angle=90)
 def listen(key):
     if key == "w":
         print("w")
-        servo.angle += 5
+        servo.angle += 10
         print(servo.angle)
     elif key == "s":
         print("S")
-        servo.angle -= 5
+        servo.angle -= 10
         print(servo.angle)
 
     
