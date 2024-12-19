@@ -13,7 +13,7 @@ def listen(key):
             print("w")
             servo.angle += 5
             print(servo.angle)
-    else:
-        print("Cant go above 90")
+        elif servo.angle >= 90:
+            print("Nigga")
     
 listen_keyboard(listen)
