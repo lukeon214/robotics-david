@@ -5,7 +5,7 @@ led = LED(21)
 led.blink()
 
 servo1 = AngularServo(19, min_angle=-90, max_angle=90)
-servo2 = Motor(20, forward=4, backward=14)
+servo2 = Motor(forward=4, backward=14)
 
 def listen(key):
     if servo1.angle != 90:
