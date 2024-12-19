@@ -33,7 +33,7 @@ def listen(key):
         pass
 
     if servo2.angle != -90:
-        if key == "s":
+        if key == "a":
             print("left")
             servo2.angle -= 10
             print(servo2.angle)
