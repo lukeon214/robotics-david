@@ -23,17 +23,13 @@ def listen(key):
             print(servo1.angle)
 
 def listen2(key):
-    if servo2.forward != 90:
-        if key == "d":
-            print("right")
-            servo2.forward += 10
-    else:
-        pass
+    if key == "d":
+        print("right")
+        servo2.forward
 
-    if servo2.backward != -90:
-        if key == "a":
-            print("left")
-            servo2.backward -= 10
+    if key == "a":
+        print("left")
+        servo2.backward
 
     
 listen_keyboard(listen, listen2)
