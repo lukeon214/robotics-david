@@ -1,4 +1,4 @@
-from gpiozero import AngularServo, LED
+from gpiozero import AngularServo
 from sshkeyboard import listen_keyboard
 
 
