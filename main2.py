@@ -32,3 +32,5 @@ def main():
                 break
     finally:
         pi.stop()  # Ensure pigpio is stopped
+
+main()
