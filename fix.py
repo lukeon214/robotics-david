@@ -18,5 +18,7 @@ def listen1(key):
             print("check 1. down")
             servo1.angle -= 10
             print(servo1.angle)
+    else:
+        pass
 
 listen_keyboard(listen1)
