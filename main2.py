@@ -13,6 +13,8 @@ def blink_led():
     pi.write(LED_PIN, 0)
     time.sleep(2) 
 
+blink_led()
+
 pi.set_PWM_frequency(20,200)
 
 def map(x:float,in_min:float,in_max:float,out_min:float,out_max:float)-> float:
