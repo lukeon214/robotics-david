@@ -1,5 +1,14 @@
 import pigpio
 import time
+from time import sleep
+from gpiozero import LED
+
+led = LED(18)
+led.on()
+sleep(1)
+led.off()
+sleep(1)
+
 pi = pigpio.pi()
 pi.set_PWM_frequency(20,200)
 
