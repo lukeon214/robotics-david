@@ -3,19 +3,19 @@ import time
 
 pi = pigpio.pi()
 
-LED_PIN = 4
+LED_PIN = 26
 pi.set_mode(LED_PIN, pigpio.OUTPUT)
 
 
 def blink_led():
-    pi.write(LED_PIN, 0)
-    time.sleep(2)
-    pi.write(LED_PIN, 1)
-    time.sleep(2)
-    pi.write(LED_PIN, 0)
-    time.sleep(2)
-    pi.write(LED_PIN, 1)
-    time.sleep(2) 
+    off = 0
+    on = 1
+    while True:
+         pi.write(LED_PIN, on)
+         time.sleep(0.5)
+         pi.write(LED_PIN, off)
+         time.sleep(0.5)
+  
 
 blink_led()
 
