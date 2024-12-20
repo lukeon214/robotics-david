@@ -20,3 +20,4 @@ while 1:
     
         setAngle(float(i))
         time.sleep(0.01)
+        print(float(i))
