@@ -1,8 +1,7 @@
-from gpiozero import AngularServo, LED, Motor
+from gpiozero import AngularServo, LED
 from sshkeyboard import listen_keyboard
 
 servo1 = AngularServo(19, min_angle=-90, max_angle=90)
-servo2 = AngularServo(20, min_angle=-90, max_angle=90)
 servo3 = AngularServo(21, min_angle=-90, max_angle=90)
 
 def listen1(key):
@@ -35,4 +34,4 @@ def listen3(key):
             servo3.angle -= 45
             print(servo3.angle)
 
-listen_keyboard(listen1, listen2, listen3)
+listen_keyboard(listen1, listen3)
