@@ -2,18 +2,18 @@ from gpiozero import AngularServo
 from sshkeyboard import listen_keyboard
 
 servo = AngularServo(20, min_angle=-90, max_angle=90)
-
+servo.angle=0.0
 def listen1(key):
     if servo.angle != 90:
         if key == "w":
             print("up")
-            servo.angle += 10
+            servo.angle += 10.0
             print(servo.angle)
 
     if servo.angle != -90:
         if key == "s":
             print("down")
-            servo.angle -= 10
+            servo.angle -= 10.0
             print(servo.angle)
     
 listen_keyboard(listen1)
