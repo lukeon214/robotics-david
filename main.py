@@ -6,16 +6,16 @@ from time import sleep
 factory = PiGPIOFactory()
 servo = AngularServo(20, min_angle=-90, max_angle=90, pin_factory=factory)
 
-def listen1(key):
+def listen1():
     servo.angle = min(90, servo.angle + 90)
     sleep(5)
     while servo.angle != -90:
         servo.angle = max(-90, servo.angle - 1)
-        sleep(0.1)
+        sleep(0.05)
         print(servo.angle)
     else:
         servo.angle = min(90, servo.angle + 1)
-        sleep(0.1)
+        sleep(0.05)
         print(servo.angle)
     
 print("Enter function")
