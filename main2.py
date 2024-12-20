@@ -14,6 +14,7 @@ while 1:
     
         setAngle(float(i))
         time.sleep(0.01)
+        print(setAngle)
 
     for i in range(-90,90)[::-1]:
     
