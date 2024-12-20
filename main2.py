@@ -3,7 +3,7 @@ import time
 
 pi = pigpio.pi()
 
-LED_PIN = 8
+LED_PIN = 18
 pi.set_mode(LED_PIN, pigpio.OUTPUT)
 
 
@@ -12,7 +12,7 @@ def blink_led():
     time.sleep(0.01)
     pi.write(LED_PIN, 0)
     time.sleep(0.01) 
-    
+
 pi.set_PWM_frequency(20,200)
 
 def map(x:float,in_min:float,in_max:float,out_min:float,out_max:float)-> float:
