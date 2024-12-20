@@ -10,12 +10,12 @@ pi.set_mode(LED_PIN, pigpio.OUTPUT)
 def blink_led():
     off = 0
     on = 1
-    while True:
+    num = 0
+    if num < 1:
          pi.write(LED_PIN, on)
          time.sleep(0.5)
          pi.write(LED_PIN, off)
          time.sleep(0.5)
-  
 
 blink_led()
 
