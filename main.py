@@ -1,8 +1,6 @@
 from gpiozero import AngularServo, LED, Motor
 from sshkeyboard import listen_keyboard
 
-led = LED(31)
-led.blink()
 
 servo1 = AngularServo(19, min_angle=-90, max_angle=90)
 servo2 = AngularServo(20, min_angle=-90, max_angle=90)
