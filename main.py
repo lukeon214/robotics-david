@@ -51,4 +51,4 @@ def listen3(key):
             servo3.angle -= 45
             print(servo3.angle)
     
-listen_keyboard(listen1, listen2, listen3)
+listen_keyboard(listen1)
