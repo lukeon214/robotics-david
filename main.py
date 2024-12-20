@@ -11,9 +11,12 @@ def listen1(key):
     sleep(5)
     while servo.angle != -90:
         servo.angle = max(-90, servo.angle - 1)
+        sleep(0.1)
         print(servo.angle)
     else:
-        print("END!")
+        servo.angle = min(90, servo.angle + 1)
+        sleep(0.1)
+        print(servo.angle)
     
 print("Enter function")
 print("1. loop")
