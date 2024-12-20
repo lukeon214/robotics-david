@@ -6,9 +6,6 @@ servo1 = AngularServo(19, min_angle=-90, max_angle=90)
 servo2 = AngularServo(20, min_angle=-90, max_angle=90)
 servo3 = AngularServo(21, min_angle=-90, max_angle=90)
 
-green = LED(31)
-green.blink()
-
 def listen1(key):
     if servo1.angle != 90:
         if key == "w":
