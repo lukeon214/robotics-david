@@ -12,4 +12,4 @@ while 1:
     for i in range(-90,90):
     
         setAngle(float(i))
-        time.sleep(0.05)
+        time.sleep(0.01)
