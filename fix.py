@@ -2,7 +2,7 @@ from gpiozero import AngularServo, LED
 from sshkeyboard import listen_keyboard
 
 
-servo1 = AngularServo(19, min_angle=-90, max_angle=90)
+servo1 = AngularServo(20, min_angle=-90, max_angle=90)
 
 def listen1(key):
     if servo1.angle != 90:
