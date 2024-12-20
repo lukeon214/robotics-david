@@ -11,6 +11,10 @@ def blink_led():
     pi.write(LED_PIN, 1)
     time.sleep(2)
     pi.write(LED_PIN, 0)
+    time.sleep(2)
+    pi.write(LED_PIN, 1)
+    time.sleep(2)
+    pi.write(LED_PIN, 0)
     time.sleep(2) 
 
 blink_led()
