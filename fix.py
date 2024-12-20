@@ -1,5 +1,5 @@
 from gpiozero import LED
 
 
-red = LED(20)
+red = LED(21)
 red.blink()
