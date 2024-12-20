@@ -1,5 +1,4 @@
-from gpiozero import AngularServo, LED, Motor
-from sshkeyboard import listen_keyboard
+from gpiozero import LED
 
 
 red = LED(20)
