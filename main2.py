@@ -3,7 +3,7 @@ import time
 
 pi = pigpio.pi()
 
-LED_PIN = 18
+LED_PIN = 4
 pi.set_mode(LED_PIN, pigpio.OUTPUT)
 
 
