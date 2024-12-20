@@ -1,5 +1,4 @@
 from gpiozero import AngularServo
-from gpiozero import Pigpio
 from sshkeyboard import listen_keyboard
 
 servo = AngularServo(20, min_angle=-90, max_angle=90)
