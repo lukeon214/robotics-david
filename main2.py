@@ -1,6 +1,14 @@
 import pigpio
 import time
 
+LED_PIN = 8
+pi.set_mode(LED_PIN, pigpio.OUTPUT)
+
+def blink_led():
+    pi.write(LED_PIN, 1)
+    time.sleep(0.01)
+    pi.write(LED_PIN, 0)
+    time.sleep(0.01) 
 
 pi = pigpio.pi()
 pi.set_PWM_frequency(20,200)
