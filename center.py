@@ -18,4 +18,4 @@ def setAngle(angle: float):
     pulse_width = map(angle, -90, 90, 1000, 1900)
     pi.set_servo_pulsewidth(SERVO_PIN, pulse_width)
 
-setAngle()
+setAngleLoop()
