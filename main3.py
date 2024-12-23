@@ -15,7 +15,12 @@ def map(x: float, in_min: float, in_max: float, out_min: float, out_max: float) 
 
 
 def setAngleLoop():
-    setAngle(90)
+    while True:
+        setAngle(90)
+        time.sleep(5)
+        setAngle(-90)
+        time.sleep(5)
+        setAngle(0)
 
 def setAngle(angle: float):
     pulse_width = map(angle, -90, 90, 1000, 1900)
