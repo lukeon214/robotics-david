@@ -32,11 +32,9 @@ def blink_led():
         pi.write(LED_PIN, 0)  
         time.sleep(0.5)
 
-led_thread = threading.Thread(target=blink_led)
-servo_thread = threading.Thread(target=setAngleLoop)
+led_thread = threading.Thread(target=blink_led,daemon=True)
+#servo_thread = threading.Thread(target=setAngleLoop)
 
 led_thread.start()
-servo_thread.start()
 
-led_thread.join()
-servo_thread.join()
+blink_led()
