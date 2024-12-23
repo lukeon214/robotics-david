@@ -12,9 +12,9 @@ def map(x: float, in_min: float, in_max: float, out_min: float, out_max: float) 
 
 def setAngleLoop():
     while True:
-        setAngle(-45)
+        setAngle(-90)
         time.sleep(3)
-        setAngle(90)
+        setAngle(45)
         time.sleep(3)
 
 def setAngle(angle: float):
