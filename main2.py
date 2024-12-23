@@ -18,12 +18,12 @@ def setAngleLoop():
     while True:
         for i in range(-90, 90):
             setAngle(float(i))
-            time.sleep(0.01)
+            time.sleep(0.05)
             print(f"Angle: {float(i)}")
 
         for i in range(-90, 90)[::-1]:
             setAngle(float(i))
-            time.sleep(0.01)
+            time.sleep(0.05)
             print(f"Angle: {float(i)}")
 
 def setAngle(angle: float):
