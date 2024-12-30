@@ -16,7 +16,7 @@ if __name__ == "__main__":
     arm = RoboticArm()
 
     try:
-        arm.set_servo_angle(0, 90)
+        arm.set_servo_angle(0, 45)
         arm.set_servo_angle(1, 90)
     except Exception as e:
         print(f"Error: {e}")
