@@ -4,23 +4,14 @@ from sshkeyboard import listen_keyboard
 
 kit = ServoKit(channels=16)
 
-def on_key_press(key):
+def listen(key):
     if key == "a":
         kit.continuous_servo[0].throttle = 0.5
-        print(f"Key 'a' pressed, setting throttle to 0.5")
-    elif key == "d":
+        time.sleep(0.1)
+        kit.continuous_servo[0].throttle = 0.0
+    if key == "d":
         kit.continuous_servo[0].throttle = -0.5
-        print(f"Key 'd' pressed, setting throttle to -0.5")
-
-def on_key_release(key):
-    if key == "a":
+        time.sleep(0.1)
         kit.continuous_servo[0].throttle = 0.0
-        print(f"Key 'a' released, setting throttle to 0.0")
-    elif key == "d":
-        kit.continuous_servo[0].throttle = 0.0
-        print(f"Key 'd' released, setting throttle to 0.0")
 
-listen_keyboard(
-    on_release=on_key_release,
-    on_press=on_key_press
-)
+listen_keyboard(listen)
