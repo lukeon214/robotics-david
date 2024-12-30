@@ -15,8 +15,7 @@ class RoboticArm:
 arm = RoboticArm()
 
 try:
-    arm.set_servo_angle(0, 45)
-    arm.set_servo_angle(1, 90)
-    arm.set_servo_angle(2, 20)
+    arm.set_servo_angle(0, 0)
+    arm.set_servo_angle(1, 0)
 except Exception as e:
     print(f"Error: {e}")
