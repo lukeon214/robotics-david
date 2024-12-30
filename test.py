@@ -17,6 +17,6 @@ def on_key_release(key):
         kit.continuous_servo[0].throttle = 0.0
 
 listen_keyboard(
-    on_press=on_key_press,
-    on_release=on_key_release
+    on_release=on_key_release,
+    on_press=on_key_press
 )
