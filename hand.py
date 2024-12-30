@@ -1,24 +1,11 @@
-import pigpio
+from adafruit_servokit import ServoKit
 import time
+from sshkeyboard import listen_keyboard
 
-pi = pigpio.pi()
+kit = ServoKit(channels=16)
 
-SERVO_PIN = 20
-pi.set_PWM_frequency(SERVO_PIN, 200)
-
-def map(x: float, in_min: float, in_max: float, out_min: float, out_max: float) -> float:
-    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
-
-
-def setAngleLoop():
-    while True:
-        setAngle(-90)
-        time.sleep(3)
-        setAngle(45)
-        time.sleep(3)
-
-def setAngle(angle: float):
-    pulse_width = map(angle, -90, 90, 1000, 1900)
-    pi.set_servo_pulsewidth(SERVO_PIN, pulse_width)
-
-setAngleLoop()
+kit.servo[1].angle = 90
+time.sleep(5)
+kit.servo[1].angle = 45
+time.sleep(5)
+kit.servo[1].angle = 0
