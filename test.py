@@ -6,7 +6,7 @@ kit = ServoKit(channels=16)
 
 def on_key_press(key):
     if key == "a":
-        kit.continuous_servo[0].throttle = 1.0
+        kit.continuous_servo[0].throttle = 0.5
 
 def on_key_release(key):
     if key == "a":
