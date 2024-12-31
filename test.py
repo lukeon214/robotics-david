@@ -8,13 +8,14 @@ print("1. 0")
 print("2. 90")
 print("3. 180")
 
-choice = int(input("$ "))
+while True:
+    choice = int(input("$ "))
 
-if choice == 1:
-    kit.servo[1].angle = 0
+    if choice == 1:
+        kit.servo[1].angle = 0
 
-if choice == 2:
-    kit.servo[1].angle = 90
+    if choice == 2:
+        kit.servo[1].angle = 90
 
-if choice == 3:
-    kit.servo[1].angle = 180
+    if choice == 3:
+        kit.servo[1].angle = 180
