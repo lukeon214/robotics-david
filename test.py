@@ -24,6 +24,11 @@ def main():
         command = input("Enter command: ")
         if command.lower() == "exit":
             break
+        try:
+            pin, angle = map(int, command.split())
+            set_servo_angle(pin, angle)
+        except ValueError:
+            print("Invalid input.")
 
 if __name__ == "__main__":
     main()
