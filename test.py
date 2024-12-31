@@ -8,7 +8,7 @@ print("1. 0")
 print("2. 90")
 print("3. 180")
 
-choice = input(int("$ "))
+choice = int(input("$ "))
 
 if choice == 1:
     kit.servo[1].angle = 0
