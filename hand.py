@@ -4,25 +4,6 @@ import threading
 
 kit = ServoKit(channels=16)
 
-def move_servo_2():
-    kit.servo[2].angle = 0
-    time.sleep(2)
-    kit.servo[2].angle = 180
-    time.sleep(2)
-    kit.servo[2].angle = 90
-    time.sleep(2)
-
-def move_servo_1():
-    kit.servo[1].angle = 65
-    time.sleep(3.5)
-    kit.servo[1].angle = 0
-
-
-thread_2 = threading.Thread(target=move_servo_2)
-thread_1 = threading.Thread(target=move_servo_1)
-
-thread_2.start()
-thread_1.start()
-
-thread_2.join()
-thread_1.join()
+kit.servo[1].angle = 90
+time.sleep(5)
+kit.servo[1].angle = 180
