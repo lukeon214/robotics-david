@@ -2,6 +2,13 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
 def set_servo_angle(pin, angle):
+    if not (0 <= angle <= 180):
+        print(f"Error: Angle {angle} is out of range (0-180).")
+        return
+    if not (0 <= pin <= 15):
+        print(f"Error: Pin {pin} is out of range (0-15).")
+        return
+    
     try:
         kit.servo[pin].angle = angle
         print(f"Servo on pin {pin} set to {angle} degrees.")
