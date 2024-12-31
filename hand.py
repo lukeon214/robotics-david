@@ -13,8 +13,8 @@ def move_servo_2():
     time.sleep(2)
 
 def move_servo_1():
-    kit.servo[1].angle = 90
-    time.sleep(5)
+    kit.servo[1].angle = 100
+    time.sleep(3)
     kit.servo[1].angle = 0
 
 # Create threads for each servo movement
