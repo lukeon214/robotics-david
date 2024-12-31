@@ -13,7 +13,7 @@ def move_servo_2():
     time.sleep(2)
 
 def move_servo_1():
-    kit.servo[1].angle = 100
+    kit.servo[1].angle = 65
     time.sleep(3)
     kit.servo[1].angle = 0
 
