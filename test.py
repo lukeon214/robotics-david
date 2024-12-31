@@ -4,4 +4,4 @@ import threading
 
 kit = ServoKit(channels=16)
 
-kit.servo[1].angle = 0
+kit.servo[1].angle = 180
