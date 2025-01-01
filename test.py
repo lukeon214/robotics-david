@@ -5,7 +5,7 @@ from adafruit_servokit import ServoKit
 kit = ServoKit(channels=16)
 
 # Known speed of the continuous servo in degrees per second (at full throttle)
-DEGREES_PER_SECOND = 280  # Adjust this based on your servo's specifications
+DEGREES_PER_SECOND = 285  # Adjust this based on your servo's specifications
 
 def rotate_continuous_servo(pin, angle, speed=1.0):
     """
