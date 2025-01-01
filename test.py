@@ -25,3 +25,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# hand 0 = 50 /// 180 = 145
