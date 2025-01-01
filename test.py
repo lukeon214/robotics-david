@@ -51,7 +51,7 @@ def rotate_continuous_servo(pin, angle, speed=1.0):
 
     # Calculate rotation time
     rotation_time = abs(angle) / (DEGREES_PER_SECOND * speed)
-    direction = 1 if angle > 0 else -1  # Determine direction based on angle
+    direction = -1 if angle > 0 else 1  # Determine direction based on angle
 
     try:
         # Start rotation
