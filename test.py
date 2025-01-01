@@ -3,7 +3,7 @@ from adafruit_servokit import ServoKit
 
 kit = ServoKit(channels=16)
 
-DEGREES_PER_SECOND = 300
+DEGREES_PER_SECOND = 360
 
 def control_servo(pin, angle):
     if pin == 1:
