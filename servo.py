@@ -10,6 +10,6 @@ def move_servos():
     for angle in angles:
         for servo in servos:
             kit.servo[servo].angle = angle
-        time.sleep(2)
+        time.sleep(0.05)
 
 move_servos()
