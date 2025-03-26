@@ -3,7 +3,7 @@ import time
 
 pi = pigpio.pi()
 
-SERVO_PIN = 20
+SERVO_PIN = 15
 pi.set_PWM_frequency(SERVO_PIN, 200)
 
 def map(x: float, in_min: float, in_max: float, out_min: float, out_max: float) -> float:
