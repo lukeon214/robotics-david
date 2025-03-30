@@ -4,7 +4,7 @@ import time
 kit = ServoKit(channels=16)
 
 servos = [0, 1, 2, 3, 4, 5]
-angles = [0, 90, 180]
+angles = list(range(0, 181, 5))
 
 def move_servos():
     for angle in angles:
