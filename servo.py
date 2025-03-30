@@ -12,5 +12,4 @@ def move_servos():
             kit.servo[servo].angle = angle
         time.sleep(0.05)
 
-while True:
-    move_servos()
+move_servos()
