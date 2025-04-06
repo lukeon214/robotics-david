@@ -8,8 +8,8 @@ kit = ServoKit(channels=16)
 # Leg configuration
 L1 = 110  # mm (body to knee)
 L2 = 150  # mm (knee to foot)
-SERVO0_NEUTRAL = 140   # Body joint default
-SERVO1_NEUTRAL = 90  # Knee joint default
+SERVO0_NEUTRAL = 90   # Body joint default
+SERVO1_NEUTRAL = 140  # Knee joint default
 
 def setup_servos():
     kit.servo[0].angle = SERVO0_NEUTRAL
@@ -38,7 +38,7 @@ def calculate_ik(x, y):
 
     return round(servo0_angle, 1), round(servo1_angle, 1)
 
-def move_leg(servo0_angle, servo1_angle, duration=1.0):
+def move_leg(servo0_angle, servo1_angle, duration=0.5):
     current0 = kit.servo[0].angle
     current1 = kit.servo[1].angle
     steps = 20
@@ -50,41 +50,37 @@ def move_leg(servo0_angle, servo1_angle, duration=1.0):
         kit.servo[1].angle = interp1
         time.sleep(duration / steps)
 
-# Interactive mode
+def wave_movement():
+    """Performs a wave-like movement from high to low positions"""
+    # Create a sequence of targets in a wave pattern
+    base_x = [x for x in range(200, 100, -5)]  # X from 200mm to 100mm
+    wave_y = [50 * math.sin(i/5) for i in range(len(base_x))]  # Sine wave pattern
+    
+    targets = list(zip(base_x, wave_y))
+    
+    for x, y in targets:
+        print(f"\nMoving to ({x}mm, {round(y,1)}mm)")
+        angles = calculate_ik(x, y)
+        if angles:
+            print(f"Servo angles: {angles}")
+            move_leg(angles[0], angles[1], duration=0.3)
+        else:
+            print("Skipping unreachable position")
+        time.sleep(0.1)
+
 if __name__ == "__main__":
     setup_servos()
-    print("Hexapod Leg Control - Inverse Kinematics")
-    print("Type 'exit' to quit\n")
+    print("Starting automatic wave movement...")
     
-    while True:
-        try:
-            x_input = input("Enter X coordinate (mm): ")
-            if x_input.lower() == 'exit':
-                break
-                
-            y_input = input("Enter Y coordinate (mm): ")
-            if y_input.lower() == 'exit':
-                break
-
-            x = float(x_input)
-            y = float(y_input)
+    try:
+        while True:
+            wave_movement()
+            time.sleep(1)
+            # Reverse wave
+            print("\nReversing direction...")
+            wave_movement()
             
-            angles = calculate_ik(x, y)
-            
-            if angles:
-                print(f"Moving to ({x}mm, {y}mm)")
-                print(f"Servo angles: {angles}")
-                move_leg(angles[0], angles[1])
-                print("Movement complete!\n")
-            else:
-                print("⚠️ Target position unreachable! Try different coordinates.\n")
-                
-        except ValueError:
-            print("⚠️ Invalid input! Please enter numbers only.\n")
-        except KeyboardInterrupt:
-            print("\nExiting...")
-            break
-
-    # Return to neutral position
-    setup_servos()
-    print("Servos returned to neutral position")
+    except KeyboardInterrupt:
+        print("\nReturning to neutral position...")
+        setup_servos()
+        print("Movement stopped!")
