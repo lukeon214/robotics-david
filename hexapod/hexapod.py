@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # Move foot in a square pattern
     targets = [
         (7, 7),   # Forward-right
-        (7, -7),  # Backward-right
+        (-7, -7),  # Backward-right
         (-7, -7), # Backward-left
         (0, 0),  # Forward-left
     ]
