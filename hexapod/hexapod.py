@@ -67,7 +67,7 @@ if __name__ == "__main__":
         (7, 7),   # Forward-right
         (7, -7),  # Backward-right
         (-7, -7), # Backward-left
-        (-7, 7),  # Forward-left
+        (0, 0),  # Forward-left
     ]
     
     for x, y in targets:
