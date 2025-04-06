@@ -8,8 +8,8 @@ kit = ServoKit(channels=16)
 # Leg configuration
 L1 = 110  # mm (body to knee)
 L2 = 150  # mm (knee to foot)
-SERVO0_NEUTRAL = 90   # Body joint default
-SERVO1_NEUTRAL = 180  # Knee joint default
+SERVO0_NEUTRAL = 140   # Body joint default
+SERVO1_NEUTRAL = 90  # Knee joint default
 
 def setup_servos():
     kit.servo[0].angle = SERVO0_NEUTRAL
