@@ -10,13 +10,13 @@ GPIO.setup(STEP, GPIO.OUT)
 
 GPIO.output(DIR, GPIO.HIGH)  # Set direction
 
-steps = 200  # One revolution (1.8° per step)
-
 try:
-    for _ in range(steps):
+    while True:
         GPIO.output(STEP, GPIO.HIGH)
         time.sleep(0.001)  # Step pulse width
         GPIO.output(STEP, GPIO.LOW)
         time.sleep(0.001)
+except KeyboardInterrupt:
+    print("Stopped by user.")
 finally:
     GPIO.cleanup()
