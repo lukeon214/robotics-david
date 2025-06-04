@@ -36,7 +36,7 @@ try:
         for step in seq:
             for pin in range(4):
                 GPIO.output(pins[pin], step[pin])
-            step_count += 1
+            step_count += 0.5
             angle = step_count * STEP_ANGLE
             print(f"Current angle: {angle:.2f}°")
             time.sleep(0.002)  # Adjust speed
