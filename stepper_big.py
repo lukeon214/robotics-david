@@ -1,14 +1,10 @@
 import RPi.GPIO as GPIO
 import time
 
-# === Motor Driver GPIO Pins ===
-DIR_PIN = 18   # Direction GPIO pin
-STEP_PIN = 17  # Step GPIO pin
+DIR_PIN = 18   
+STEP_PIN = 17  
+STEPS_PER_REV = 200
 
-# === Motor Constants ===
-STEPS_PER_REV = 200   # Adjust for microstepping if needed
-
-# === Setup ===
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(DIR_PIN, GPIO.OUT, initial=GPIO.LOW)
