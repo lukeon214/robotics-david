@@ -10,6 +10,7 @@ GPIO.setup(DIR_PIN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(STEP_PIN, GPIO.OUT, initial=GPIO.LOW)
 
 while True:
+    direction = True
     GPIO.output(STEP_PIN, GPIO.HIGH)
     time.sleep(0.001)
     GPIO.output(STEP_PIN, GPIO.LOW)
