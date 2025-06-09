@@ -15,16 +15,8 @@ GPIO.setup(DIR_PIN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(STEP_PIN, GPIO.OUT, initial=GPIO.LOW)
 
 def rotate_motor(revolutions=1, rpm=60, direction=True):
-    """
-    Rotate the stepper motor.
-    
-    Parameters:
-        revolutions (float): Number of revolutions
-        rpm (float): Speed in revolutions per minute
-        direction (bool): True for one way, False for opposite
-    """
     steps = int(STEPS_PER_REV * revolutions)
-    delay = 60.0 / (STEPS_PER_REV * rpm) / 2  # time between step transitions
+    delay = 0.0 / (STEPS_PER_REV * rpm) / 2  # time between step transitions
 
     GPIO.output(DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
     
@@ -35,10 +27,8 @@ def rotate_motor(revolutions=1, rpm=60, direction=True):
         time.sleep(delay)
 
 try:
-    # Example usage: rotate 3 full turns at 90 RPM clockwise
     rotate_motor(revolutions=3, rpm=5, direction=True)
 
-    # Then rotate back 1 turn at 30 RPM counter-clockwise
     rotate_motor(revolutions=3, rpm=5, direction=False)
 
 finally:
