@@ -1,30 +1,49 @@
 import RPi.GPIO as GPIO
 import time
 
-DIR  = 18     # GPIO pin numbers
-STEP = 17
+# GPIO pin setup
+DIR = 18     # Direction GPIO pin
+STEP = 17    # Step GPIO pin
+CW = GPIO.HIGH   # Clockwise
+CCW = GPIO.LOW   # Counter-clockwise
 
+# Motor setup
+SPR = 200         # Steps per revolution (1.8°/step)
+
+# Initialize GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(DIR,  GPIO.OUT, initial=GPIO.HIGH)   # CW
-GPIO.setup(STEP, GPIO.OUT, initial=GPIO.LOW)
+GPIO.setup(DIR, GPIO.OUT)
+GPIO.setup(STEP, GPIO.OUT)
 
-ANGLE_PER_STEP = 1.8          # full-step, no micro-stepping
-current_angle  = 0.0
+# Set direction
+GPIO.output(DIR, CW)  # Change to CCW for reverse
 
+step_delay = 0.01     # 10ms delay = 100 steps/sec (slow and safe)
+
+print("Rotating motor 1 revolution clockwise...")
 try:
-    while True:
+    for step in range(SPR):  # One full revolution
         GPIO.output(STEP, GPIO.HIGH)
-        time.sleep(0.001)      # 1 ms high
+        time.sleep(step_delay)
         GPIO.output(STEP, GPIO.LOW)
-        time.sleep(0.001)      # 1 ms low  → 500 steps/s ≈ 1 rev/s
+        time.sleep(step_delay)
 
-        current_angle += ANGLE_PER_STEP
-        if current_angle >= 360:
-            current_angle -= 360
+    time.sleep(1)  # Short pause
 
-        print(f"{current_angle:6.1f}°", end="\r", flush=True)
+    print("Now rotating 1 revolution counter-clockwise...")
+    GPIO.output(DIR, CCW)
+    time.sleep(0.5)
+
+    for step in range(SPR):
+        GPIO.output(STEP, GPIO.HIGH)
+        time.sleep(step_delay)
+        GPIO.output(STEP, GPIO.LOW)
+        time.sleep(step_delay)
+
+    print("Test complete.")
 
 except KeyboardInterrupt:
-    print("\nStopped at {:.1f}°".format(current_angle))
+    print("\nInterrupted by user.")
+
 finally:
     GPIO.cleanup()
