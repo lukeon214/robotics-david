@@ -36,10 +36,10 @@ def rotate_motor(revolutions=1, rpm=60, direction=True):
 
 try:
     # Example usage: rotate 3 full turns at 90 RPM clockwise
-    rotate_motor(revolutions=3, rpm=3, direction=True)
+    rotate_motor(revolutions=3, rpm=1, direction=True)
 
     # Then rotate back 1 turn at 30 RPM counter-clockwise
-    rotate_motor(revolutions=3, rpm=3, direction=False)
+    rotate_motor(revolutions=3, rpm=1, direction=False)
 
 finally:
     # Explicitly set pins LOW before cleanup
