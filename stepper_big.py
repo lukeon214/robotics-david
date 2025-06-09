@@ -43,7 +43,7 @@ try:
 
 finally:
     # Explicitly set pins LOW before cleanups
-    GPIO.output(STEP_PIN, GPIO.HIGH)
-    GPIO.output(DIR_PIN, GPIO.HIGH)
+    GPIO.output(STEP_PIN, GPIO.LOW)
+    GPIO.output(DIR_PIN, GPIO.LOW)
     
     GPIO.cleanup()
