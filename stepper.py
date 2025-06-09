@@ -18,7 +18,7 @@ def motor(direction=True):
         time.sleep(0.001)
     
 try:
-    motor(direction=False)
+    motor(direction=True)
 
 finally:
     GPIO.output(STEP_PIN, GPIO.LOW)
