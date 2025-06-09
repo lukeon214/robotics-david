@@ -6,7 +6,7 @@ DIR_PIN = 18   # Direction GPIO pin
 STEP_PIN = 17  # Step GPIO pin
 
 # === Motor Constants ===
-STEPS_PER_REV = 200   # Adjust for microstepping if needed
+STEPS_PER_REV = 300   # Adjust for microstepping if needed
 
 # === Setup ===
 GPIO.setmode(GPIO.BCM)
@@ -36,10 +36,10 @@ def rotate_motor(revolutions=1, rpm=60, direction=True):
 
 try:
     # Example usage: rotate 3 full turns at 90 RPM clockwise
-    rotate_motor(revolutions=3, rpm=1000, direction=True)
+    rotate_motor(revolutions=3, rpm=15, direction=True)
 
     # Then rotate back 1 turn at 30 RPM counter-clockwise
-    rotate_motor(revolutions=3, rpm=1000, direction=False)
+    rotate_motor(revolutions=3, rpm=15, direction=False)
 
 finally:
     # Explicitly set pins LOW before cleanup
