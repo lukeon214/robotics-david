@@ -6,7 +6,7 @@ DIR_PIN = 18   # Direction GPIO pin
 STEP_PIN = 17  # Step GPIO pin
 
 # === Motor Constants ===
-STEPS_PER_REV = 300   # Adjust for microstepping if needed
+STEPS_PER_REV = 200   # Adjust for microstepping if needed
 
 # === Setup ===
 GPIO.setmode(GPIO.BCM)
