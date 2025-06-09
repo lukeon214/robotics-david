@@ -16,7 +16,7 @@ GPIO.setup(STEP_PIN, GPIO.OUT, initial=GPIO.LOW)
 
 def rotate_motor(revolutions=1, rpm=60, direction=True):
     steps = int(STEPS_PER_REV * revolutions)
-    delay = 0.002 / (STEPS_PER_REV * rpm) / 2  # time between step transitions
+    delay = 0.05
 
     GPIO.output(DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
     
