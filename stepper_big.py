@@ -26,12 +26,12 @@ def rotate_motor(revolutions=1, rpm=60, direction=True):
     steps = int(STEPS_PER_REV * revolutions)
     delay = 60.0 / (STEPS_PER_REV * rpm) / 2  # time between step transitions
 
-    GPIO.output(DIR_PIN, GPIO.HIGH if direction else GPIO.LOW)
+    GPIO.output(DIR_PIN, GPIO.HIGH if direction else GPIO.HIGH)
     
     for _ in range(steps):
         GPIO.output(STEP_PIN, GPIO.HIGH)
         time.sleep(delay)
-        GPIO.output(STEP_PIN, GPIO.LOW)
+        GPIO.output(STEP_PIN, GPIO.HIGH)
         time.sleep(delay)
 
 try:
@@ -43,7 +43,7 @@ try:
 
 finally:
     # Explicitly set pins LOW before cleanups
-    GPIO.output(STEP_PIN, GPIO.LOW)
-    GPIO.output(DIR_PIN, GPIO.LOW)
+    GPIO.output(STEP_PIN, GPIO.HIGH)
+    GPIO.output(DIR_PIN, GPIO.HIGH)
     
     GPIO.cleanup()
