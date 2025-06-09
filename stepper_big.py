@@ -12,8 +12,8 @@ GPIO.output(DIR, GPIO.HIGH)
 
 for _ in range(200):  # 1 revolution
     GPIO.output(STEP, GPIO.HIGH)
-    time.sleep(0.01)
+    time.sleep(0.001)
     GPIO.output(STEP, GPIO.LOW)
-    time.sleep(0.01)
+    time.sleep(0.001)
 
 GPIO.cleanup()
