@@ -39,7 +39,7 @@ try:
     rotate_motor(revolutions=3, rpm=90, direction=True)
 
     # Then rotate back 1 turn at 30 RPM counter-clockwise
-    rotate_motor(revolutions=1, rpm=90, direction=False)
+    rotate_motor(revolutions=3, rpm=90, direction=False)
 
 finally:
     # Explicitly set pins LOW before cleanup
