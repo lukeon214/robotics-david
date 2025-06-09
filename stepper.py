@@ -8,4 +8,5 @@ GPIO.setwarnings(False)
 GPIO.setup(DIR_PIN, GPIO.OUT, initial=GPIO.LOW)
 GPIO.setup(STEP_PIN, GPIO.OUT, initial=GPIO.LOW)
 
-GPIO.output(STEP_PIN, GPIO.HIGH)
+while True:
+    GPIO.output(STEP_PIN, GPIO.HIGH)
