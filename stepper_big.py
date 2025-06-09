@@ -42,4 +42,8 @@ try:
     rotate_motor(revolutions=1, rpm=30, direction=False)
 
 finally:
+    # Explicitly set pins LOW before cleanups
+    GPIO.output(STEP_PIN, GPIO.LOW)
+    GPIO.output(DIR_PIN, GPIO.LOW)
+    
     GPIO.cleanup()
