@@ -23,9 +23,9 @@ def rotate_motor(revolutions=1, rpm=60, direction=True):
         time.sleep(delay)
 
 try:
-    rotate_motor(revolutions=3, rpm=300, direction=True)
+    rotate_motor(revolutions=3, rpm=200, direction=True)
 
-    rotate_motor(revolutions=3, rpm=300, direction=False)
+    rotate_motor(revolutions=3, rpm=200, direction=False)
 
 finally:
     GPIO.output(STEP_PIN, GPIO.LOW)
