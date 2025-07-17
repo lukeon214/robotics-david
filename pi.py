@@ -1,38 +1,31 @@
 import time
 import RPi.GPIO as GPIO
-import pigpio
-from nrf24 import NRF24
+import spidev
+from nrf24simple import NRF24  # Using the downloaded minimal driver
 
-# Setup GPIO
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 LED_PIN = 18
 GPIO.setup(LED_PIN, GPIO.OUT)
 
-# Setup pigpio and NRF24
-pi = pigpio.pi()
-if not pi.connected:
-    print("Could not connect to pigpio daemon")
-    exit()
+pipes = [b"1Node", b"2Node"]  # Must match transmitter
 
-# Use GPIO25 for CE, GPIO8 (CE0) for CSN
-radio = NRF24(pi, ce=25, csn=8)  # Adjust pins if needed
+# Setup SPI and NRF
+radio = NRF24()
+radio.begin(0, 0, 17)  # SPI0, CE=17 (adjust to match your wiring)
+radio.setPayloadSize(32)
+radio.setChannel(0x76)
+radio.setDataRate(NRF24.BR_1MBPS)
+radio.setPALevel(NRF24.PA_LOW)
+radio.openReadingPipe(1, pipes[0])
+radio.startListening()
 
-pipes = [[0xF0, 0xF0, 0xF0, 0xF0, 0xE1], [0xF0, 0xF0, 0xF0, 0xF0, 0xD2]]
-radio.set_payload_size(32)
-radio.set_channel(0x76)
-radio.set_data_rate(NRF24.BR_1MBPS)
-radio.set_pa_level(NRF24.PA_MIN)
-radio.open_reading_pipe(1, pipes[0])
-radio.start_listening()
-
-# Listen and toggle LED
 while True:
     if radio.available():
         received = []
-        radio.read(received, radio.get_dynamic_payload_size())
-        message = "".join([chr(n) for n in received if 0 < n < 128])
+        radio.read(received, 32)
+        message = "".join([chr(n) for n in received if n > 0])
         print("Received:", message)
 
         if message.strip() == "TURNON":
@@ -40,4 +33,4 @@ while True:
         else:
             GPIO.output(LED_PIN, GPIO.LOW)
 
-    time.sleep(1)
+    time.sleep(0.5)
