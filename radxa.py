@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 radio = NRF24()
-radio.begin(spi_bus=0, spi_device=0, ce=17)  # Match wiring
+radio.begin(spi_bus=0, spi_device=0, ce=24)  # Match wiring
 
 radio.setPayloadSize(32)
 radio.set_channel(0x76)

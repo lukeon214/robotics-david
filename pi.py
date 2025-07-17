@@ -9,7 +9,7 @@ LED_PIN = 18
 GPIO.setup(LED_PIN, GPIO.OUT)
 
 radio = NRF24()
-radio.begin(spi_bus=0, spi_device=0, ce=17)  # Match wiring: CE on GPIO17
+radio.begin(spi_bus=0, spi_device=0, ce=25)  # Match wiring: CE on GPIO17
 
 radio.setPayloadSize(32)
 radio.set_channel(0x76)
