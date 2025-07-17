@@ -8,7 +8,7 @@ if not pi.connected:
     raise RuntimeError("Could not connect to pigpio daemon")
 
 # Setup nRF24L01
-radio = NRF24(pi, ce=22, csn=8, spi_channel=0, spi_speed=1000000)
+radio = NRF24(pi, ce=22, spi_channel=0, spi_speed=1000000)
 
 radio.set_payload_size(32)
 radio.set_channel(76)
