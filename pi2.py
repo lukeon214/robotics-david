@@ -2,35 +2,30 @@ import time
 import pigpio
 from nrf24 import NRF24
 
-# Connect to pigpio
 pi = pigpio.pi()
 if not pi.connected:
     raise RuntimeError("Could not connect to pigpio daemon")
 
-# Set up NRF24L01+
-radio = NRF24(pi, ce=25)  # CE=GPIO25, CSN=GPIO8 (CE0)
+radio = NRF24(pi, ce=25, spi_channel=0)
 radio.set_payload_size(32)
 radio.set_channel(76)
-
-# Set reading pipe address
 radio.open_reading_pipe(1, b"2Node")
 
-# Enable listening mode
-radio.listen = True
+# listen = True  → start_listening()
+radio.start_listening()
 
-print("Listening for messages...")
-
+print("Listening for messages…")
 try:
     while True:
+        # data_ready() stays the same
         if radio.data_ready():
-            payload = radio.get_data()
-            message = payload.decode('utf-8').rstrip('\x00')
+            # get_data() → read()
+            payload = radio.read()
+            message = payload.decode("utf-8").rstrip("\x00")
             print("Received:", message)
         time.sleep(0.01)
-
 except KeyboardInterrupt:
     print("Stopped by user")
-
 finally:
-    radio.listen = False
+    radio.stop_listening()
     pi.stop()
