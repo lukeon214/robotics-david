@@ -3,7 +3,7 @@ from nrf24simplee import NRF24
 
 # Initialize NRF24 module
 radio = NRF24()
-radio.begin(spi_bus=0, spi_device=0, ce=24)  # CE is on GPIO24, adjust if needed
+radio.begin(spi_bus=4, spi_device=0, ce=24)  # Use spi4, adjust CE pin as needed
 
 radio.setPayloadSize(32)
 radio.set_channel(0x76)
