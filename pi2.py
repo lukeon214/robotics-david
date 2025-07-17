@@ -11,21 +11,23 @@ radio.set_payload_size(32)
 radio.set_channel(76)
 radio.open_reading_pipe(1, b"2Node")
 
-# listen = True  → start_listening()
+# start_listening(), not radio.listen = True
 radio.listen = True
 
 print("Listening for messages…")
+
 try:
     while True:
-        # data_ready() stays the same
         if radio.data_ready():
-            # get_data() → read()
-            payload = radio.read()
-            message = payload.decode("utf-8").rstrip("\x00")
+            # get_payload() instead of read()/get_data()
+            payload = radio.get_payload()
+            message = bytes(payload).decode('utf-8').rstrip('\x00')
             print("Received:", message)
         time.sleep(0.01)
+
 except KeyboardInterrupt:
     print("Stopped by user")
+
 finally:
     radio.listen = False
     pi.stop()
