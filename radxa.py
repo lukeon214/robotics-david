@@ -1,26 +1,33 @@
-from nrf24 import NRF24
 import time
-import spidev
 import RPi.GPIO as GPIO
+from nrf24simple import NRF24
 
 GPIO.setmode(GPIO.BCM)
-
-pipes = [[0xF0,0xF0,0xF0,0xF0,0xE1], [0xF0,0xF0,0xF0,0xF0,0xD2]]
+GPIO.setwarnings(False)
 
 radio = NRF24()
-radio.begin(0, 17)  # CE pin, CSN pin (adjust for your board)
-radio.setPayloadSize(32)
-radio.setChannel(0x76)
-radio.setDataRate(NRF24.BR_1MBPS)
-radio.setPALevel(NRF24.PA_MIN)
-radio.openWritingPipe(pipes[0])
-radio.stopListening()
+radio.begin(spi_bus=0, spi_device=0, ce=17)  # Match wiring
 
-message = list("TURNON")
-while len(message) < 32:
-    message.append(0)
+radio.setPayloadSize(32)
+radio.set_channel(0x76)
+radio.setDataRate(1)
+radio.setPALevel(0)
+
+pipe = [0xF0, 0xF0, 0xF0, 0xF0, 0xE1]
+radio.openReadingPipe(1, pipe)  # Not strictly needed for write, but safe
+GPIO.output(radio.cePin, GPIO.LOW)  # Stop listening before writing
+
+def send_message(msg):
+    # Pad or truncate to 32 bytes
+    msg = list(msg.encode("utf-8"))
+    while len(msg) < 32:
+        msg.append(0)
+    msg = msg[:32]
+
+    # Write payload
+    radio.spi.xfer2([0xA0] + msg)
+    print("Sent:", ''.join(chr(b) for b in msg if b > 0))
 
 while True:
-    radio.write(message)
-    print("Sent: TURNON")
+    send_message("TURNON")
     time.sleep(5)
