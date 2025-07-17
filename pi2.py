@@ -7,21 +7,18 @@ pi = pigpio.pi()
 if not pi.connected:
     raise RuntimeError("Could not connect to pigpio daemon")
 
-# Setup nRF24L01
-radio = NRF24(pi, ce=22, spi_channel=0, spi_speed=1000000)
-
+# Set up NRF24L01+
+radio = NRF24(pi, ce=25)  # CE=GPIO25, CSN=GPIO8 (CE0)
 radio.set_payload_size(32)
 radio.set_channel(76)
-radio.set_auto_ack(True)
-radio.enable_ack_payload()
-radio.set_data_rate(NRF24.DATA_RATE_1MBPS)
-radio.set_pa_level(NRF24.PA_MIN)
 
-# RX address (must match TX's "writing pipe")
+# Set reading pipe address
 radio.open_reading_pipe(1, b"2Node")
-radio.start_listening()
 
-print("Waiting for messages...")
+# Enable listening mode
+radio.listen = True
+
+print("Listening for messages...")
 
 try:
     while True:
@@ -32,8 +29,8 @@ try:
         time.sleep(0.01)
 
 except KeyboardInterrupt:
-    print("Exiting...")
+    print("Stopped by user")
 
 finally:
-    radio.stop_listening()
+    radio.listen = False
     pi.stop()
