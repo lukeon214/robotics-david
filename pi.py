@@ -22,6 +22,7 @@ radio.openReadingPipe(1, pipe)
 radio.startListening()
 
 while True:
+    print("test")
     if radio.available():
         received = []
         radio.read(received, 32)
