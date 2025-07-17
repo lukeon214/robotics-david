@@ -8,7 +8,7 @@ if not pi.connected:
     exit()
 
 # NRF24L01 Setup
-nrf = NRF24(pi, ce=25, payload_size=32, channel=76, data_rate=NRF24.BR_1MBPS)
+nrf = NRF24(pi, ce=22, payload_size=32, channel=76, data_rate=NRF24.BR_1MBPS)
 nrf.set_t_address(b"1Node")
 nrf.set_r_address(b"2Node")
 
