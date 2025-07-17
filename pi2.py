@@ -27,5 +27,5 @@ try:
 except KeyboardInterrupt:
     print("Stopped by user")
 finally:
-    radio.stop_listening()
+    radio.listen = False
     pi.stop()
