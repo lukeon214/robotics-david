@@ -12,7 +12,7 @@ radio.set_channel(76)
 radio.open_reading_pipe(1, b"2Node")
 
 # listen = True  → start_listening()
-radio.start_listening()
+radio.listen = True
 
 print("Listening for messages…")
 try:
