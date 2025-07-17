@@ -23,7 +23,7 @@ try:
         msg = f"Hi {count}"
         print("Sending:", msg)
         # this returns True/False
-        success = nrf.write(msg.encode("utf-8"))
+        success = nrf.send(msg.encode("utf-8"))
         print("OK" if success else "FAIL")
         count += 1
         time.sleep(1)
