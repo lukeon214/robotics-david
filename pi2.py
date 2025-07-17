@@ -6,7 +6,7 @@ pi = pigpio.pi()
 if not pi.connected:
     raise RuntimeError("Could not connect to pigpio daemon")
 
-radio = NRF24(pi, ce=22, spi_channel=0)
+radio = NRF24(pi, ce=25, spi_channel=0)
 radio.set_payload_size(32)
 radio.set_channel(76)
 radio.open_reading_pipe(1, b"2Node")

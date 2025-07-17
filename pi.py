@@ -3,7 +3,7 @@ import pigpio
 from nrf24 import NRF24
 
 pi = pigpio.pi()
-radio = NRF24(pi, ce=22, spi_channel=0)
+radio = NRF24(pi, ce=25, spi_channel=0)
 
 radio.set_payload_size(32)
 radio.set_channel(76)
