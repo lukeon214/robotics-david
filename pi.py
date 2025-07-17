@@ -1,23 +1,30 @@
 import time
 import pigpio
-from nrf24 import NRF24
+from nrf24 import NRF24, RF24_PAYLOAD, RF24_DATA_RATE, RF24_PA
 
 pi = pigpio.pi()
-radio = NRF24(pi, ce=25, spi_channel=0)
+if not pi.connected:
+    raise RuntimeError("cannot connect to pigpio")
 
-radio.set_payload_size(32)
-radio.set_channel(76)
-radio.open_writing_pipe(b"1Node")
-radio.open_reading_pipe(1, b"2Node")
+nrf = NRF24(pi,
+           ce=25,
+           payload_size=RF24_PAYLOAD.DYNAMIC,
+           channel=76,
+           data_rate=RF24_DATA_RATE.RATE_1MBPS,
+           pa_level=RF24_PA.LOW)
+
+address = "1NODE"
+nrf.set_address_bytes(len(address))
+nrf.open_writing_pipe(address)
 
 count = 0
 try:
     while True:
-        msg = f"Hi {count}".encode("utf-8")
+        msg = f"Hi {count}"
         print("Sending:", msg)
-        # write() → send()
-        success = radio.send(msg)
-        print("Sent" if success else "Failed")
+        # this returns True/False
+        success = nrf.write(msg.encode("utf-8"))
+        print("OK" if success else "FAIL")
         count += 1
         time.sleep(1)
 except KeyboardInterrupt:

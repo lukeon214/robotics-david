@@ -1,33 +1,34 @@
 import time
 import pigpio
-from nrf24 import NRF24
+from nrf24 import NRF24, RF24_PAYLOAD, RF24_DATA_RATE, RF24_PA, RF24_RX_ADDR
 
 pi = pigpio.pi()
 if not pi.connected:
-    raise RuntimeError("Could not connect to pigpio daemon")
+    raise RuntimeError("cannot connect to pigpio")
 
-radio = NRF24(pi, ce=25, spi_channel=0)
-radio.set_payload_size(32)
-radio.set_channel(76)
-radio.open_reading_pipe(1, b"2Node")
+nrf = NRF24(pi,
+           ce=25,
+           payload_size=RF24_PAYLOAD.DYNAMIC,
+           channel=76,
+           data_rate=RF24_DATA_RATE.RATE_1MBPS,
+           pa_level=RF24_PA.LOW)
 
-# start_listening(), not radio.listen = True
-radio.listen = True
+address = "1NODE"
+nrf.set_address_bytes(len(address))
+nrf.open_reading_pipe(RF24_RX_ADDR.P1, address)
 
-print("Listening for messages…")
+# dump registers so you can verify pipe‑0 address, channel, etc.
+nrf.show_registers()
 
+print("Listening…")
 try:
     while True:
-        if radio.data_ready():
-            # get_payload() instead of read()/get_data()
-            payload = radio.get_payload()
-            message = bytes(payload).decode('utf-8').rstrip('\x00')
-            print("Received:", message)
+        if nrf.data_ready():
+            payload = nrf.get_payload()            # returns list of ints
+            text    = bytes(payload).rstrip(b'\x00').decode("utf-8")
+            print("Received:", text)
         time.sleep(0.01)
-
 except KeyboardInterrupt:
-    print("Stopped by user")
-
+    pass
 finally:
-    radio.listen = False
     pi.stop()
