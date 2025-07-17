@@ -20,6 +20,8 @@ nrf.open_reading_pipe(RF24_RX_ADDR.P1, address)
 # dump registers so you can verify pipe‑0 address, channel, etc.
 nrf.show_registers()
 
+nrf.listen = True
+
 print("Listening…")
 try:
     while True:
